@@ -2,6 +2,7 @@ package me.coley.cafedude.attribute;
 
 /**
  * Constant value attribute
+ * 
  * @author JCWasmx86
  *
  */
@@ -23,14 +24,14 @@ public class ConstantValueAttribute extends Attribute{
 	public int computeInternalLength() {
 		return 2;
 	}
-	
+
 	/**
 	 * @return Index in the constant pool representing the value of this attribute.
 	 */
 	public int getConstantValueIndex() {
 		return constantValueIndex;
 	}
-	
+
 	/**
 	 * @param constantValueIndex
 	 * 		Index in the constant pool representing the value of this attribute.
