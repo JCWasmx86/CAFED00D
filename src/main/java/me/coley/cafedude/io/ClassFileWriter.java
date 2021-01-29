@@ -181,6 +181,11 @@ public class ClassFileWriter {
 			out.writeShort(debugExtension.getNameIndex());
 			out.writeInt(debugExtension.getDebugExtension().length);
 			out.write(debugExtension.getDebugExtension());
+		}else if (attribute instanceof ConstantValueAttribute) {
+			ConstantValueAttribute constantValueAttribute = (ConstantValueAttribute) attribute;
+			out.writeShort(constantValueAttribute.getNameIndex());
+			out.writeInt(2);
+			out.writeShort(constantValueAttribute.getConstantValueIndex());
 		} else {
 			throw new UnsupportedOperationException("Attr type serialization not supported: " +
 					attribute.getClass().getName());

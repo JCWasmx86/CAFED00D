@@ -207,11 +207,16 @@ public class ClassFileReader {
 				return new DebugExtensionAttribute(nameIndex, debugExtension);
 			case Attribute.SYNTHETIC:
 				return new SyntheticAttribute(nameIndex);
+			case Attribute.CONSTANT_VALUE:
+				if (context != AttributeContext.FIELD) {
+					is.skipBytes(length);
+					return null;
+				}
+				return new ConstantValueAttribute(nameIndex, is.readUnsignedShort());
 			case Attribute.ANNOTATION_DEFAULT:
 			case Attribute.BOOTSTRAP_METHODS:
 			case Attribute.CHARACTER_RANGE_TABLE:
 			case Attribute.COMPILATION_ID:
-			case Attribute.CONSTANT_VALUE:
 			case Attribute.ENCLOSING_METHOD:
 			case Attribute.EXCEPTIONS:
 			case Attribute.INNER_CLASSES:
